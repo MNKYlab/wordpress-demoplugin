@@ -58,4 +58,4 @@ register_activation_hook(__FILE__, array('\\ACME\\Demo\\Tool\\Activator', 'init'
 register_deactivation_hook(__FILE__, array('\\ACME\\Demo\\Tool\\Deactivator', 'init'));
 
 // main plugin
-Plugin::init();
+add_action('init', array('\\ACME\\Demo\\Plugin', 'init'));
