@@ -23,6 +23,7 @@ if ( ! defined('WPINC'))
 // Global variables, as few as possible
 define('ACME_DEMO_VERSION', '1.0.0');
 define('ACME_DEMO_PATH', plugin_dir_path(__FILE__));
+define('ACME_DEMO_URL', plugin_dir_url(__FILE__));
 
 // autoloader
 spl_autoload_register(function($className){
