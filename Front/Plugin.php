@@ -10,7 +10,7 @@ class Plugin extends \ACME\Demo\Abstract_Plugin
 {
 	public static function init($loader)
 	{
-		return new self($loader);
+		return new self($loader, basename(__DIR__));
 	}
 
 	protected function add_actions()
