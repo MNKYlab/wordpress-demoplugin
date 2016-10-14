@@ -6,7 +6,7 @@ namespace ACME\Demo\Front;
 if ( ! defined('ACME_DEMO_VERSION'))
 	exit;
 
-class Plugin 
+class Plugin extends \ACME\Demo\Abstract_Plugin
 {
 	protected $loader;
 
@@ -18,5 +18,28 @@ class Plugin
 	public function __construct($loader)
 	{
 		$this->loader = $loader;
+
+		$this->add_actions();
+		$this->add_filters();
 	}
+
+	protected function add_actions()
+	{
+		$this->loader->add_action('wp_enqueue_scripts', $this, 'register_enqueue');
+		// + custom action hooks
+	}
+
+	protected function add_filters()
+	{
+		// custom filter hooks
+	}
+
+	protected function register_scripts() {}
+
+	protected function enqueue_scripts() {}
+
+	protected function register_styles() {}
+
+	protected function enqueue_styles() {}
+
 }
