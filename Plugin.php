@@ -34,7 +34,11 @@ class Plugin
 
 	protected function init_hooks()
 	{
-		
+		if (is_admin())
+		{
+			Back\Plugin::init($this->loader);
+		}
+		Front\Plugin::init($this->loader);
 	}
 
 	public function run()
