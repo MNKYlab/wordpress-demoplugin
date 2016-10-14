@@ -8,19 +8,9 @@ if ( ! defined('ACME_DEMO_VERSION'))
 
 class Plugin extends \ACME\Demo\Abstract_Plugin
 {
-	protected $loader;
-
 	public static function init($loader)
 	{
 		return new self($loader);
-	}
-
-	public function __construct($loader)
-	{
-		$this->loader = $loader;
-
-		$this->add_actions();
-		$this->add_filters();
 	}
 
 	protected function add_actions()
