@@ -28,6 +28,21 @@ define('ACME_DEMO_BASENAME', plugin_basename(__FILE__));
 
 // autoloader
 spl_autoload_register(function($className){
+  $namespaceLength = strlen(__NAMESPACE__);
+
+  // If not this plugins' namespace, abort.
+  if (substr($className, 0 , $namespaceLength) !== __NAMESPACE__)
+    return;
+
+  $className = ltrim(substr($className, $namespaceLength), '\\');
+  $fileName = sprintf('%s%s%s%s',
+    ACME_DEMO_PATH,
+    'src' . DIRECTORY_SEPARATOR,
+    str_replace('\\', DIRECTORY_SEPARATOR, $className),
+    '.php');
+
+  if (file_exists($fileName))
+    require_once $fileName;
 });
 
 // activation
