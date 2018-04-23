@@ -38,7 +38,7 @@ class Plugin
 		{
 			Back\Hooks::getInstance($this->loader)->run();
 		}
-		Front\Hooks::getInstance($this->loader)->run();
+		General\Hooks::getInstance($this->loader)->run();
 	}
 
 	public function run()

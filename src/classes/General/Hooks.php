@@ -1,6 +1,6 @@
 <?php
 
-namespace ACME\Demo\Front;
+namespace ACME\Demo\General;
 
 // If called directly, abort.
 if ( ! defined('ACME_DEMO_VERSION')) {
