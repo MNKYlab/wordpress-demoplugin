@@ -37,7 +37,7 @@ spl_autoload_register(function($className){
   $className = ltrim(substr($className, $namespaceLength), '\\');
   $fileName = sprintf('%s%s%s%s',
     ACME_DEMO_PATH,
-    'src' . DIRECTORY_SEPARATOR,
+    'src' . DIRECTORY_SEPARATOR . 'classes' . DIRECTORY_SEPARATOR,
     str_replace('\\', DIRECTORY_SEPARATOR, $className),
     '.php');
 
