@@ -21,17 +21,20 @@ class Plugin
     protected function __construct()
     {
         $this->loader = new Tool\Loader;
-        $this->set_locale();
-        $this->init_hooks();
+        $this->setLocale();
+        $this->initHooks();
     }
 
-    protected function set_locale()
+    protected function setLocale()
     {
-        $i18n = new Tool\I18n;
-        $this->loader->add_action('plugins_loaded', $i18n, 'load_textdomain');
+        $this->loader->addAction(
+            'plugins_loaded',
+            Tool\I18n::class,
+            'loadTextdomain'
+        );
     }
 
-    protected function init_hooks()
+    protected function initHooks()
     {
         if (is_admin()) {
             Back\Hooks::getInstance($this->loader)->run();
@@ -44,20 +47,27 @@ class Plugin
         $this->loader->run();
     }
 
-    protected static function get_src_extra($base, array $dir, $file)
+    protected static function getSrcExtra($base, array $dir, $file)
     {
         $path = $base . implode(DIRECTORY_SEPARATOR, $dir);
         $file = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $file);
         return $path . DIRECTORY_SEPARATOR . $file;
     }
 
-    public static function get_assets_url($file)
+    public static function getAssetsUrl($file)
     {
-        return self::get_src_extra(ACME_DEMO_URL, ['assets'], $file);
+        return self::getSrcExtra(ACME_DEMO_URL, ['assets'], $file);
     }
 
-    public static function get_templates_path($file)
+    public static function getTemplatesPath($file)
     {
-        return self::get_src_extra(ACME_DEMO_PATH, ['src', 'templates'], $file . '.php');
+        return self::getSrcExtra(
+            ACME_DEMO_PATH,
+            [
+                'src',
+                'templates'
+            ],
+            $file . '.php'
+        );
     }
 }

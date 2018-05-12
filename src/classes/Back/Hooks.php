@@ -27,15 +27,15 @@ class Hooks
 
     public function run()
     {
-        $this->add_actions();
-        $this->add_filters();
+        $this->addActions();
+        $this->addFilters();
     }
 
-    protected function add_actions()
+    protected function addActions()
     {
     }
 
-    protected function add_filters()
+    protected function addFilters()
     {
     }
 }

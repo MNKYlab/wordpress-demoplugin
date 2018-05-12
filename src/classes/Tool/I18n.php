@@ -9,7 +9,7 @@ if (! defined('ACME_DEMO_VERSION')) {
 
 class I18n
 {
-    public static function load_textdomain()
+    public static function loadTextdomain()
     {
         load_plugin_textdomain(
             'acmeplugin',
