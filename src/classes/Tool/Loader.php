@@ -12,8 +12,13 @@ class Loader
         $this->actions = [];
         $this->filters = [];
     }
-    public function addAction($hook, $component, $callback, $priority = 10, $args = 1)
-    {
+    public function addAction(
+        $hook,
+        $component,
+        $callback,
+        $priority = 10,
+        $args = 1
+    ) {
         $this->actions = $this->add(
             $this->actions,
             $hook,
@@ -23,8 +28,13 @@ class Loader
             $args
         );
     }
-    public function addFilter($hook, $component, $callback, $priority = 10, $args = 1)
-    {
+    public function addFilter(
+        $hook,
+        $component,
+        $callback,
+        $priority = 10,
+        $args = 1
+    ) {
         $this->filters = $this->add(
             $this->filters,
             $hook,
@@ -34,8 +44,14 @@ class Loader
             $args
         );
     }
-    protected function add($hooks, $hook, $component, $callback, $priority, $args)
-    {
+    protected function add(
+        $hooks,
+        $hook,
+        $component,
+        $callback,
+        $priority,
+        $args
+    ) {
         array_push(
             $hooks,
             [
