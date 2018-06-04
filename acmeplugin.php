@@ -58,4 +58,4 @@ register_deactivation_hook(__FILE__, array(Tool\Deactivator::class, 'run'));
 register_uninstall_hook(__FILE__, array(Tool\Uninstaller::class, 'run'));
 
 // main plugin
-add_action('init', array(Plugin::class, 'init'));
+add_action('plugins_loaded', array(Plugin::class, 'init'));
