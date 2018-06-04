@@ -2,5 +2,8 @@
     "name": "acme/demo",
     "type": "project",
     "license": "GPL-2.0+",
+    "autoload": {
+        "psr-4": {"ACME\\Demo\\": "src/classes/"}
+    },
     "require": {}
 }
