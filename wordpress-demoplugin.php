@@ -2,21 +2,21 @@
 
 /**
  * @wordpress-plugin
- * Plugin Name:	Demo Plugin
- * Plugin URI:	https://acme.com/demo-plugin
- * Description:	Demonstrate ... what exactly? Max 140 characters.
- * Version:	1.0.0
- * Author:	ACME
- * Author URI:	https://acme.com
- * License:	GPL-2.0+
- * License URI:	http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:	acme-demo
- * Domain Path:	/languages
+ * Plugin Name: Demo Plugin
+ * Plugin URI:  https://acme.com/demo-plugin
+ * Description: Demonstrate ... what exactly? Max 140 characters.
+ * Version:     1.0.0
+ * Author:      ACME
+ * Author URI:  https://acme.com
+ * License:     GPL-3.0+
+ * License URI: https://opensource.org/licenses/GPL-3.0
+ * Text Domain: acme-demo
+ * Domain Path: /languages
  */
 
 // If called directly, abort.
-if ( ! defined('WPINC')) {
-	die;
+if (!defined('WPINC')) {
+    die;
 }
 
 // global variables, as few as possible
