@@ -29,13 +29,13 @@ define('ACME_DEMO_BASENAME', plugin_basename(__FILE__));
 require_once ACME_DEMO_PATH . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 
 // activation hook
-register_activation_hook(__FILE__, array(Tool\Activator::class, 'run'));
+register_activation_hook(__FILE__, [\ACME\Demo\Tool\Activator::class, 'run']);
 
 // deactivation hook
-register_deactivation_hook(__FILE__, array(Tool\Deactivator::class, 'run'));
+register_deactivation_hook(__FILE__, [\ACME\Demo\Tool\Deactivator::class, 'run']);
 
 // uninstall hook
-register_uninstall_hook(__FILE__, array(Tool\Uninstaller::class, 'run'));
+register_uninstall_hook(__FILE__, [\ACME\Demo\Tool\Uninstaller::class, 'run']);
 
 // start plugin execution
-add_action('plugins_loaded', array(Plugin::class, 'init'));
+add_action('plugins_loaded', [\ACME\Demo\Plugin::class, 'init']);
