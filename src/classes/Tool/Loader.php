@@ -2,11 +2,6 @@
 
 namespace ACME\Demo\Tool;
 
-// If called directly, abort.
-if (! defined('ACME_DEMO_VERSION')) {
-    exit;
-}
-
 class Loader
 {
     protected $actions;
@@ -17,7 +12,7 @@ class Loader
         $this->actions = [];
         $this->filters = [];
     }
-    public function addAction($hook, $component, $callback, $priority=10, $args=1)
+    public function addAction($hook, $component, $callback, $priority = 10, $args = 1)
     {
         $this->actions = $this->add(
             $this->actions,
@@ -28,7 +23,7 @@ class Loader
             $args
         );
     }
-    public function addFilter($hook, $component, $callback, $priority=10, $args=1)
+    public function addFilter($hook, $component, $callback, $priority = 10, $args = 1)
     {
         $this->filters = $this->add(
             $this->filters,

@@ -2,11 +2,6 @@
 
 namespace ACME\Demo\Back;
 
-// If called directly, abort.
-if (! defined('ACME_DEMO_VERSION')) {
-    exit;
-}
-
 class Hooks
 {
     protected static $instance;
