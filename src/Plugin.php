@@ -26,7 +26,7 @@ class Plugin
 
     public function run()
     {
-        if (is_admin()) {
+        if (\is_admin()) {
             Back\Init::getInstance()->run();
         }
         Front\Init::getInstance()->run();

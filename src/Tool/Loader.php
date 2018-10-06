@@ -72,6 +72,6 @@ class Loader
             $priority,
             $args,
         ];
-        call_user_func_array($name, $arguments);
+        \call_user_func_array($name, $arguments);
     }
 }
