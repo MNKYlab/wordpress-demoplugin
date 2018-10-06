@@ -27,9 +27,9 @@ class Plugin
     public function run()
     {
         if (is_admin()) {
-            Back::getInstance()->run();
+            Back\Init::getInstance()->run();
         }
-        Front::getInstance()->run();
+        Front\Init::getInstance()->run();
     }
 
     protected static function getSrcExtra($base, array $dir, $file)
