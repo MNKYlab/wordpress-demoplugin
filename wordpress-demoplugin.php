@@ -14,10 +14,10 @@
  * Domain Path: /languages
  */
 
-use ACME\Demo\Tool\Activator;
-use ACME\Demo\Tool\Deactivator;
-use ACME\Demo\Tool\Uninstaller;
-use ACME\Demo\Plugin;
+use \ACME\Demo\Tool\Activator;
+use \ACME\Demo\Tool\Deactivator;
+use \ACME\Demo\Tool\Uninstaller;
+use \ACME\Demo\Plugin;
 
 // If called directly, abort.
 if (!defined('WPINC')) {
