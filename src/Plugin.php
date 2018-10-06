@@ -24,17 +24,12 @@ class Plugin
         );
     }
 
-    protected function initHooks()
+    public function run()
     {
         if (is_admin()) {
             Back::getInstance()->run();
         }
         Front::getInstance()->run();
-    }
-
-    public function run()
-    {
-        $this->loader->run();
     }
 
     protected static function getSrcExtra($base, array $dir, $file)
