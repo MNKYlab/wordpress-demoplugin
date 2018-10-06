@@ -23,7 +23,7 @@ class Plugin
     protected function setLocale()
     {
         $this->loader->addAction(
-            'plugins_loaded',
+            'setup_theme',
             Tool\I18n::class,
             'loadTextdomain'
         );
@@ -45,7 +45,6 @@ class Plugin
     protected static function getSrcExtra($base, array $dir, $file)
     {
         $path = $base . implode(DIRECTORY_SEPARATOR, $dir);
-        $file = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $file);
         return $path . DIRECTORY_SEPARATOR . $file;
     }
 
@@ -56,13 +55,6 @@ class Plugin
 
     public static function getTemplatesPath($file)
     {
-        return self::getSrcExtra(
-            ACME_DEMO_PATH,
-            [
-                'src',
-                'templates'
-            ],
-            $file . '.php'
-        );
+        return self::getSrcExtra(ACME_DEMO_PATH, ['templates'], $file . '.php');
     }
 }
