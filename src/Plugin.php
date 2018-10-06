@@ -6,7 +6,7 @@ class Plugin
 {
     protected $loader;
 
-    public static function init()
+    public static function plugins_loaded()
     {
         $app = new self;
         $app->run();
