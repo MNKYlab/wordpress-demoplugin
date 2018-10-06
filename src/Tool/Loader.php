@@ -14,9 +14,7 @@ class Loader
         return self::$instance;
     }
 
-    protected function __construct()
-    {
-    }
+    protected function __construct() {}
 
     public static function addAction(
         $hook,

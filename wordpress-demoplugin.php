@@ -29,18 +29,19 @@ define('ACME_DEMO_VERSION', '1.0.0');
 define('ACME_DEMO_PATH', plugin_dir_path(__FILE__));
 define('ACME_DEMO_URL', plugin_dir_url(__FILE__));
 define('ACME_DEMO_BASENAME', plugin_basename(__FILE__));
+define('ACME_DEMO_PREFIX', 'acme_demo_');
 
 // composer autoloading
 require_once ACME_DEMO_PATH . 'vendor/autoload.php';
 
 // activation hook
-register_activation_hook(__FILE__, [Activator::class, 'run']);
+\register_activation_hook(__FILE__, [Activator::class, 'run']);
 
 // deactivation hook
-register_deactivation_hook(__FILE__, [Deactivator::class, 'run']);
+\register_deactivation_hook(__FILE__, [Deactivator::class, 'run']);
 
 // uninstall hook
-register_uninstall_hook(__FILE__, [Uninstaller::class, 'run']);
+\register_uninstall_hook(__FILE__, [Uninstaller::class, 'run']);
 
 // start plugin execution
-add_action('plugins_loaded', [Plugin::class, 'plugins_loaded']);
+\add_action('plugins_loaded', [Plugin::class, 'plugins_loaded']);
