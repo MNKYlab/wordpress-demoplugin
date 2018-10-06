@@ -2,27 +2,22 @@
 
 namespace ACME\Demo;
 
+use ACME\Demo\Tool\Loader;
+
 class Plugin
 {
-    protected $loader;
-
     public static function plugins_loaded()
     {
-        $app = new self;
+        $app = new self();
         $app->run();
         return $app;
     }
 
-    protected function __construct()
-    {
-        $this->loader = new Tool\Loader;
-        $this->setLocale();
-        $this->initHooks();
-    }
+    protected function __construct() {}
 
     protected function setLocale()
     {
-        $this->loader->addAction(
+        Loader::addAction(
             'setup_theme',
             Tool\I18n::class,
             'loadTextdomain'
@@ -32,9 +27,9 @@ class Plugin
     protected function initHooks()
     {
         if (is_admin()) {
-            Back\Hooks::getInstance($this->loader)->run();
+            Back::getInstance()->run();
         }
-        General\Hooks::getInstance($this->loader)->run();
+        Front::getInstance()->run();
     }
 
     public function run()

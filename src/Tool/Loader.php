@@ -4,23 +4,29 @@ namespace ACME\Demo\Tool;
 
 class Loader
 {
-    protected $actions;
-    protected $filters;
+    protected static $instance;
 
-    public function __construct()
+    public static function getInstance()
     {
-        $this->actions = [];
-        $this->filters = [];
+        if (self::$instance === null) {
+            self::$instance = new self();
+        }
+        return self::$instance;
     }
-    public function addAction(
+
+    protected function __construct()
+    {
+    }
+
+    public static function addAction(
         $hook,
         $component,
         $callback,
         $priority = 10,
         $args = 1
     ) {
-        $this->actions = $this->add(
-            $this->actions,
+        self::runHook(
+            'add_action',
             $hook,
             $component,
             $callback,
@@ -28,15 +34,16 @@ class Loader
             $args
         );
     }
-    public function addFilter(
+
+    public static function addFilter(
         $hook,
         $component,
         $callback,
         $priority = 10,
         $args = 1
     ) {
-        $this->filters = $this->add(
-            $this->filters,
+        self::runHook(
+            'add_filter',
             $hook,
             $component,
             $callback,
@@ -44,48 +51,26 @@ class Loader
             $args
         );
     }
-    protected function add(
-        $hooks,
+
+    protected function runHook(
+        $name,
         $hook,
-        $component,
+        $component = null,
         $callback,
-        $priority,
-        $args
+        $priority = 10,
+        $args = 1
     ) {
-        array_push(
-            $hooks,
-            [
-                'hook' => $hook,
-                'component' => $component,
-                'callback' => $callback,
-                'priority' => $priority,
-                'args' => $args,
-            ]
-        );
-        return $hooks;
-    }
-    public function run()
-    {
-        foreach ($this->actions as $hook) {
-            $this->runHook('add_action', $hook);
-        }
-        foreach ($this->filters as $hook) {
-            $this->runHook('add_filter', $hook);
-        }
-    }
-    protected function runHook($name, $hook)
-    {
-        if ($hook['component'] === null) {
-            $callable = $hook['callback'];
+        if ($component === null) {
+            $callable = $callback;
         } else {
-            $callable = [$hook['component'], $hook['callback']];
+            $callable = [$component, $callback];
         }
 
         $arguments = [
-            $hook['hook'],
+            $hook,
             $callable,
-            $hook['priority'],
-            $hook['args']
+            $priority,
+            $args,
         ];
         call_user_func_array($name, $arguments);
     }
