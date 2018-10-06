@@ -52,7 +52,7 @@ class Loader
         );
     }
 
-    protected function runHook(
+    protected static function runHook(
         $name,
         $hook,
         $component = null,
